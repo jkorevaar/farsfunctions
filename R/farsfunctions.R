@@ -88,6 +88,7 @@ fars_read_years <- function(years) {
   })
 }
 
+
 #' Summarizes the FARS data by year and month.
 #'
 #' The \code{fars_summarize_years} function summarizes the number of accidents for
