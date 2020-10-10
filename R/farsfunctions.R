@@ -78,8 +78,8 @@ fars_read_years <- function(years) {
 #' @param years Va string or integer showing which years of data to summarize
 #' @importFrom dplyr "group_by_"
 #' @importFrom dplyr "bind_rows"
-#' @importFrom dplyr "sumarize_"
-#' @importFrom tidyr" "spread_"
+#' @importFrom dplyr "summarise_"
+#' @importFrom tidyr "spread_"
 #' @return a tibble with an id column as monht, and the remaining columns for
 #' selected yars. Values in year columns are number of observation that month /
 #' year
@@ -93,7 +93,7 @@ fars_summarize_years <- function(years) {
   dat_list <- fars_read_years(years)
   dplyr::bind_rows(dat_list) %>%
     dplyr::group_by_(~ year, ~ MONTH) %>%
-    dplyr::summarize_(n = ~ n()) %>%
+    dplyr::summarise_(n = ~ n()) %>%
     tidyr::spread_('year', 'n')
 }
 
