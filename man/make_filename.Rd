@@ -2,27 +2,21 @@
 % Please edit documentation in R/farsfunctions.R
 \name{make_filename}
 \alias{make_filename}
-\title{Make FARS Filename.}
+\title{Makes a file name for a given year.}
 \usage{
 make_filename(year)
 }
 \arguments{
-\item{year}{the year of interest - string or integer}
+\item{year}{Can be a numeric or chracter vector of years. if it is chracter, chnages to numeric using \code{as.integer} function.}
 }
 \value{
-returns a string that is the proper filename for the FARS data for
-that year
+It returns a character of file name, like "accident_2013.csv.bz2".
 }
 \description{
-Make FARS Filename.
-}
-\note{
-makes a properly formatted FARS filename given a year as input
-
-won't work if year is not in integer or a string format
+\code{make_filename} function takes a year argument and creates a file name of the given year.
 }
 \examples{
-make_filename(year = '2013')
-make_filename(year = 2013)
-
+\dontrun{
+make_filename(2013)
+}
 }

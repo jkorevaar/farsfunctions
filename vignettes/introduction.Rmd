@@ -1,0 +1,53 @@
+---
+title: "fars"
+author: "Jan Korevaar"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Package Description
+
+`fars_functions` package reads and plots Fatality Analysis Reporting System (FARS) data 
+from the National Highway Traffic Safety Administration. [FARS](https://en.wikipedia.org/wiki/Fatality_Analysis_Reporting_System)
+
+
+## Load Packages
+
+```{r}
+library(farsfunctions)
+```
+
+
+## Included data
+
+Data files included within the package are:
+
+```{r}
+list.files(system.file("extdata", package = "farsfunctions"))
+```
+
+
+## Package Functionsdev
+
+### Function `make_filename`
+
+This function returns file name and path to the data files:
+
+```{r}
+make_filename(year = 2013)
+```
+
+### Function `fars_read_years`
+
+Ancillary function used by `fars_summarize_years`
+
+```{r}
+fars_read_years(years = c(2013, 2014, 2015))
+```
+
+# Links:
+* [Package fars GitHub](https://github.com/jkorevaar/farsdata)

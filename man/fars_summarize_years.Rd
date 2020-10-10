@@ -2,27 +2,25 @@
 % Please edit documentation in R/farsfunctions.R
 \name{fars_summarize_years}
 \alias{fars_summarize_years}
-\title{Produce a Summary of FARS Files.}
+\title{Summarizes the FARS data by year and month.}
 \usage{
 fars_summarize_years(years)
 }
 \arguments{
-\item{years}{Va string or integer showing which years of data to summarize}
+\item{years}{Integer of years or acharacter coreciable to numeric.}
 }
 \value{
-a tibble with an id column as monht, and the remaining columns for
-selected yars. Values in year columns are number of observation that month /
-year
+Returns a summary of accidents in a data frame where the first column
+reprsents months. Each column are the input years and is filled by
+the number of accidents happend in each montht. If the input year is
+not in the data set it returns an error.
 }
 \description{
-Produce a Summary of FARS Files.
-}
-\note{
-produces a summary tibble of FARS years and months given a vector of years.
-
-won't work if referring to a year that has no data associated
+The \code{fars_summarize_years} function summarizes the number of accidents for
+each year by month. The first column represents \code{MONTH} and the
+other column are the input years. If the input year is not present in the data
+it returns an error.
 }
 \examples{
-fars_summarize_years(years = c(2013, 2014, 2015))
-fars_summarize_years(years = 2015)
+fars_summarize_years(c(2013,2014,2015))
 }

@@ -2,26 +2,33 @@
 % Please edit documentation in R/farsfunctions.R
 \name{fars_read}
 \alias{fars_read}
-\title{Read FARS Data.}
+\title{Reads  an accident file from the US FARS.}
 \usage{
 fars_read(filename)
 }
 \arguments{
-\item{filename}{Character string giving the filename of the data.}
+\item{filename}{A chracter of filename of accident which has the form of "accident_2013.csv.bz2". The file sholud not be a vector.}
 }
 \value{
-A tibble containing the FARS data.
+It returns a data fram of 50 variables where the number of rows varies by year. If the file does't exist it returns does not exist.
 }
 \description{
-Read FARS Data.
+\code{far_raed} is a function which reads an accident data from the US FARS (Fatality Analysis Recording System),
+by yearly from 2013-2015.
+}
+\details{
+To import the accident data  saved as  \code{CSV} file, first uses function.
+And then converts to tabular data frame using a \code{tbl_df} function. If the file name does't exist, it throws an error with the file name does not exist.
 }
 \note{
-reads FARS data into the environment.
-
-won't work if file name doesn't exist
+To generate file name use: \code{\link{make_filename}}
 }
 \examples{
-filename <- 'accident_2013.csv.bz2'
-fars_read(filename)
-
+\dontrun{
+year_input <- 2013
+data <- year_input \%>\%
+  make_filename \%>\%
+  fars_read
+head(data)
+}
 }

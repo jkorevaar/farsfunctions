@@ -2,26 +2,31 @@
 % Please edit documentation in R/farsfunctions.R
 \name{fars_read_years}
 \alias{fars_read_years}
-\title{Read FARS files for one or more years.}
+\title{Reads a FARS file for a given vector of years.}
 \usage{
 fars_read_years(years)
 }
 \arguments{
-\item{years}{a string or integer showing which years of data to load}
+\item{years}{A numeric vector of years corresponding to FARS file by year.
+It also accepts a charcter vector and converts to numeric.}
 }
 \value{
-Returns a list of tibbles. Each tibble contains the year and month
-rom the observations
+It returns a list of data frame with two columns and where each list
+is for the input years. The two columns are \code{MONTH} and \code{year}.
+If the file for the given year is not found, it returns a list of
+\code{NULL} with a warning message of invalid year:  \code{years}.
 }
 \description{
-Read FARS files for one or more years.
+Reads a FARS file for a given vector of years.
 }
-\note{
-produces a list of tibbles of FARS data, given an input vector of years.
-
-won't work if referring to a year that has no data associated
+\details{
+\code{fars_read_years} function imports the FRAS file for a given
+vector years, and it uses \code{\link{make_filename}} to create the
+correct file name associated with \code{years}.And then imports the file using
+\code{fars_read} function, and then adds(mutates) a varaible \code{year}. Then selects and displays
+two variables \code{MONTH}, \code{year}.
 }
 \examples{
-fars_read_years(years = c(2013, 2014, 2015))
+fars_read_years(2015)
 
 }

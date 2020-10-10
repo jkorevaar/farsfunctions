@@ -2,30 +2,27 @@
 % Please edit documentation in R/farsfunctions.R
 \name{fars_map_state}
 \alias{fars_map_state}
-\title{Map State Motor Vehicle Fatalities.}
+\title{Map of the accidents for a given stat in a year.}
 \usage{
 fars_map_state(state.num, year)
 }
 \arguments{
-\item{state.num}{the number refering to the state of interest}
+\item{state.num}{Numeric vector representing the value of STATE variable
+in the data.}
 
-\item{year}{the year of interest - string or integer}
+\item{year}{An iteger of years fro 2013 to 2015 or corceabile to itegers.}
 }
 \value{
-doesn't return anything but prints a map
+Returns a plot of map of points of accidents for the given state
+number in the year. If the stat number is not in the STAT variable, it
+returns \code{NULL}.Similarly, if the given stat number has no accident,
+\code{LONGITUDE} >900 and \code{LATITUDE}>90.
 }
 \description{
-Map State Motor Vehicle Fatalities.
-}
-\note{
-state motor vehicle fatalities given a year and state id number.
-
-won't work if referring to a year that has no data associated or a
-state id without a relevant state associated
+\code{fars_map_state} function first reads the given \code{state.num} variable,
+The map of the accident data for states where a \code{LONGITUDE} of greater
+than 900 and \code{LATITUDE} of greater than 90 but not for less than.
 }
 \examples{
-library(mapdata)
-fars_map_state(12, 2014)
-fars_map_state(36, 2014)
-
+fars_map_state(20, 2013)
 }
